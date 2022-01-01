@@ -1,0 +1,18 @@
+//.js
+ minDate: new Date().getTime(),
+ maxDate: new Date(new Date().setDate(new Date().getDate() + 2)).getTime(),
+ formatter(day) {
+    if (day.date.setHours(0,0,0,0) === new Date().setHours(0,0,0,0)) {
+        day.text = '今天';
+    }
+    return day;
+  },
+  
+//.wxml
+<van-calendar 
+      first-day-of-week="{{ 0 }}"
+      show-confirm="{{ false }}"
+      show-title="{{false}}"
+      round="{{false}}"
+      color="#0d59b2" formatter="{{ formatter }}" show="{{ showDate }}" bind:close="onCloseDate" 
+      min-date="{{ minDate }}" max-date="{{ maxDate }}" bind:confirm="onConfirmDate" />
